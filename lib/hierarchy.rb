@@ -10,22 +10,22 @@ class Hierarchy
     @org_tree.keys
   end
 
-  def add_employee(manager_id, employee_id)
-    @org_tree[manager_id] << employee_id
-  end
-
   def direct_report_ids(manager_id)
     @org_tree[manager_id]
   end
 
   private
 
+  def add_employee(manager_id, employee_id)
+    @org_tree[manager_id] << employee_id
+  end
+
   def create_relationships(employee_info)
     employee_info.each do |employee_hash|
       employee_id = employee_hash['id']
       manager_id = employee_hash['manager_id']
 
-      add_employee(manager_id, employee_id)
+      add_employee(manager_id, employee_id) unless manager_id.nil?
     end
   end
 end
