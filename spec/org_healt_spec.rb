@@ -78,7 +78,7 @@ describe OrgHealth do
   end
 
   describe 'process_scores' do
-    it '' do
+    it 'averages all employee reviews per manager' do
       payload = OrgHealth.process_scores(review_lookup: @r, hierarchy: @h)
       lumber_score = {:manager_id => @lumberg_id, :question_id => @question_id, :average_score => 3.6666666666666665}
       gibbons_score = {:manager_id => @gibbons_id, :question_id => @question_id, :average_score => 3.0}

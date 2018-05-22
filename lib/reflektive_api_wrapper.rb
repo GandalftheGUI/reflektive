@@ -1,4 +1,5 @@
 require 'rest-client'
+require 'json'
 require 'oj'
 
 class ReflektiveApiWrapper
@@ -32,17 +33,12 @@ class ReflektiveApiWrapper
   end
 
   def self.post(payload)
-    RestClient::Request.new({
-      method: :post,
-      url: SUBMISSION_URL,
-      payload: Oj.dump(payload),
-      headers: {authorization: KEY, content_type: :json}
-    }).execute do |response, request, result|
+    RestClient.post(SUBMISSION_URL, payload.to_json, {authorization: KEY, content_type: :json, accept: :json}) do |response, request, result|
       case response.code
       when 400
         [ :error, Oj.load(response.body) ]
       when 200
-        [ :success, Oj.load(response.body) ]
+        response.body
       else
         fail "Invalid response #{response.to_str} received."
       end
