@@ -5,7 +5,7 @@ describe Hierarchy do
   before :all do
     @lumberg_id = "9431e9b0-1dce-4912-8762-25c43171e9d4"
     @gibbons_id = "d8f06abc-5782-477a-86d1-f54b97085cdb"
-    @nagheenanajar_id = "12f2e570-ffd7-40c4-8378-0d62a9816120"
+    @nagheenanajar_id = "5afad1a9-826c-4db3-9c89-20f412aff428"
     @bolton_id = "12f2e570-ffd7-40c4-8378-0d62a9816120"
 
     employee_info = [

@@ -1,4 +1,5 @@
 require 'webmock/rspec'
+require 'byebug'
 require_relative '../lib/reflektive_api_wrapper'
 
 WebMock.disable_net_connect!(allow_localhost: true)
