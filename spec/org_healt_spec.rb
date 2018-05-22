@@ -73,18 +73,16 @@ describe OrgHealth do
       }
     ]
 
-
-
     @h = Hierarchy.new(employee_info)
-    @r = ReviewLookup.new(review_info)
-    
+    @r = ReviewLookup.new(review_info)    
   end
 
   describe 'process_scores' do
     it '' do
       payload = OrgHealth.process_scores(review_lookup: @r, hierarchy: @h)
-      byebug
-      expect(@lookup.get_scores(question_id: @question_id, employee_id: "d8f06abc-5782-477a-86d1-f54b97085cdb")).to include(1, 5, 5)
+      lumber_score = {:manager_id => @lumberg_id, :question_id => @question_id, :average_score => 3.6666666666666665}
+      gibbons_score = {:manager_id => @gibbons_id, :question_id => @question_id, :average_score => 3.0}
+      expect(payload).to include(lumber_score, gibbons_score)
     end
   end
 end
