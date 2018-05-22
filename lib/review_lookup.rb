@@ -16,8 +16,8 @@ class ReviewLookup
   private
 
   def index_reviews(review_info)
-    #WARNING: if an employee has reviews from employees who are not their pier 
-    # or manager, they will also be included here! Ensure reviews are valid 
+    #WARNING: if an employee has reviews from employees who are not their piers 
+    # or manager, they will also be included here! Ensure reviews are validated 
     # upstream or add filtering for only valid reviews here.
     review_info.each do |review_hash|
       employee_id = review_hash['recipient_id']

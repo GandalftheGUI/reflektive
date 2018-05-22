@@ -32,16 +32,6 @@ class ReflektiveApiWrapper
   end
 
   def self.post(payload)
-    # response = RestClient::Request.execute(
-    #   method: :post,
-    #   payload: payload,
-    #   url: SUBMISSION_URL,
-    #   headers: {authorization: KEY, accept: :json, content_type: :json}
-    # )
-
-    # Oj.load(response.body)
-
-
     RestClient::Request.new({
       method: :post,
       url: SUBMISSION_URL,
