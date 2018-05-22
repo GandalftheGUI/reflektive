@@ -18,9 +18,9 @@ class OrgHealth
         score_count = 0
 
         hierarchy.direct_report_ids(manager_id).each do |employee_id|
-          scores = review_lookup.get_scores(question_id: question_id, employee_id: employee_id)
-          score_total += scores.reduce(&:+)
-          score_count += scores.count
+          avg, num_scores = review_lookup.get_scores(question_id: question_id, employee_id: employee_id)
+          score_total += (avg * num_scores)
+          score_count += num_scores
         end
 
         entry[:average_score] = score_total.to_f / score_count
