@@ -66,7 +66,7 @@ describe ReviewLookup do
 
   describe 'get_scores' do
     it 'returns all scores for the given employee and question' do
-      expect(@lookup.get_scores(question_id: @question_id, employee_id: "d8f06abc-5782-477a-86d1-f54b97085cdb")).to include(1, 5, 5)
+      expect(@lookup.get_scores(question_id: @question_id, employee_id: "d8f06abc-5782-477a-86d1-f54b97085cdb")).to eq([[1, 5, 5].reduce(:+) / [1, 5, 5].size.to_f, 3])
     end
   end
 

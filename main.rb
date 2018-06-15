@@ -7,6 +7,7 @@ require_relative 'lib/review_lookup'
 require_relative 'lib/org_health'
 require_relative 'lib/timer'
 
+
 #Fetch data from API
 Timer.start
 employee_info = ReflektiveApiWrapper.get_employee_data
@@ -23,7 +24,6 @@ Timer.end("Hierarchy built: ")
 #Build review lookup
 Timer.start
 r = ReviewLookup.new(review_info)
-end_time = Time.now
 Timer.end("Review lookup built: ")
 
 #Calculate scores 
@@ -32,5 +32,8 @@ payload = OrgHealth.process_scores(review_lookup: r, hierarchy: h)
 Timer.end("Averages calculated: ")
 
 #Submit response
-puts "Submission response:"
-puts ReflektiveApiWrapper.submit_scores(payload).to_s
+
+puts "\nTruncated response:"
+puts '*********************************************************'
+puts ReflektiveApiWrapper.submit_scores(payload).to_s[0...1000]
+puts '*********************************************************'
